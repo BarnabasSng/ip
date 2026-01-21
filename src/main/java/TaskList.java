@@ -7,10 +7,14 @@ public class TaskList {
         this.tasks = new ArrayList<Task>();
     }
 
+    private void printTaskSize() {
+        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+    }
+
     public void add(Task task) {
         this.tasks.add(task);
         System.out.println("Got it, I've added this task: \n"+ task);
-        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+        printTaskSize();
     }
 
     public void printList() {
@@ -32,5 +36,13 @@ public class TaskList {
         task.markAsNotDone();
         System.out.println("OK, I've marked this task as not done yet:");
         System.out.println(task);
+    }
+
+    public void delete(int index) {
+        Task task = tasks.get(index);
+        tasks.remove(index);
+        System.out.println("Noted. I've removed this task:");
+        System.out.println(task);
+        printTaskSize();
     }
 }

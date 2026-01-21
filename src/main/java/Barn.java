@@ -31,6 +31,12 @@ public class Barn {
                     break;
                 }
 
+                case "delete": {
+                    int index = processor.getIndex();
+                    tasks.delete(index);
+                    break;
+                }
+
                 case "todo": {
                     String description;
                     try {
