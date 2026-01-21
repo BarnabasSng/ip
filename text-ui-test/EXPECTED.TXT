@@ -19,4 +19,7 @@ Here are the tasks in your list:
 2.[D][ ] return book (by: 6 June)
 3.[E][ ] project meeting (from: Mon 2pm to: 4pm)
 4.[T][X] join sports club
+Noted. I've removed this task:
+[D][ ] return book (by: 6 June)
+Now you have 3 tasks in the list.
 Bye. Hope to see you again soon!
