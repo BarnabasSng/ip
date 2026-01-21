@@ -9,7 +9,8 @@ public class TaskList {
 
     public void add(Task task) {
         this.tasks.add(task);
-        System.out.println("added: "+ task.getDescription());
+        System.out.println("Got it, I've added this task: \n"+ task);
+        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
     }
 
     public void printList() {
