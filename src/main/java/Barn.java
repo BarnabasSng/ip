@@ -34,16 +34,16 @@ public class Barn {
             }
             if (firstWord.equals("deadline")) {
                 String descriptionAndBy = userString.split(" ", 2)[1];
-                String description = descriptionAndBy.split("/by")[0];
-                String by = descriptionAndBy.split("/by")[1];
+                String description = descriptionAndBy.split(" /by ")[0];
+                String by = descriptionAndBy.split(" /by ")[1];
                 Deadline task = new Deadline(description, by);
                 tasks.add(task);
             }
             if (firstWord.equals("event")) {
                 String descriptionAndFromTo = userString.split(" ", 2)[1];
-                String description = descriptionAndFromTo.split("/from|/to")[0];
-                String from = descriptionAndFromTo.split("/from|/to")[1];
-                String to = descriptionAndFromTo.split("/from|/to")[2];
+                String description = descriptionAndFromTo.split(" /from | /to ")[0];
+                String from = descriptionAndFromTo.split(" /from | /to ")[1];
+                String to = descriptionAndFromTo.split(" /from | /to ")[2];
                 Event task = new Event(description, from, to);
                 tasks.add(task);
             }
