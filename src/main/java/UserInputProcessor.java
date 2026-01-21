@@ -16,7 +16,10 @@ public class UserInputProcessor {
         return index;
     }
 
-    public String getTodoInfo() {
+    public String getTodoInfo() throws EmptyDescriptionException{
+        if (this.userString.split(" ").length <= 1) {
+            throw new EmptyDescriptionException();
+        }
         String description = this.userString.split(" ", 2)[1];
         return description;
     }
