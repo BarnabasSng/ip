@@ -75,6 +75,10 @@ public class TaskList {
         }
     }
 
+    public ArrayList<Task> getArr() {
+        return this.tasks;
+    }
+
     public void createFile() {
         Path filePath = Paths.get(this.filePathString);
         try {
