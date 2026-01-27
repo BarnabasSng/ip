@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Storage {
-    protected String filepath;
+    protected String filePath;
 
-    public Storage(String filepath) {
-        this.filepath = filepath;
+    public Storage(String filePath) {
+        this.filePath = filePath;
     }
 
     public ArrayList<Task> load() throws LoadingException, IOException{
         ArrayList<Task> tasks = new ArrayList<Task>();
-        File f = new File(this.filepath);
+        File f = new File(this.filePath);
         f.getParentFile().mkdirs();
         if (!f.exists()) {
             f.createNewFile();
@@ -51,7 +51,7 @@ public class Storage {
     }
 
     public void save(TaskList tasks) throws IOException {
-        FileWriter fw = new FileWriter(this.filepath);
+        FileWriter fw = new FileWriter(this.filePath);
         for (Task task: tasks.getArr()) {
             fw.write(task.getFormattedString() + "\n");
         }
