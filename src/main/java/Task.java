@@ -1,4 +1,4 @@
-public class Task {
+public abstract class Task {
     protected String description;
     protected boolean isDone;
 
@@ -8,7 +8,7 @@ public class Task {
     }
 
     public String getStatusIcon() {
-        return (isDone ? "X" : " "); // mark done task with X
+        return (this.isDone ? "X" : " "); // mark done task with X
     }
 
     public void markAsDone() {
@@ -22,6 +22,8 @@ public class Task {
     public String getDescription() {
         return this.description;
     }
+
+    public abstract String getFormattedString();
 
     public String toString() {
         return "[" + this.getStatusIcon() + "] " + this.description;

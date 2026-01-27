@@ -9,6 +9,18 @@ public class Deadline extends Task {
         this.by = by;
     }
 
+    public Deadline(String description, int done, String by) {
+        super(description);
+        this.by = by;
+        if (done == 1) {
+            this.markAsDone();
+        }
+    }
+
+    public String getFormattedString() {
+        return "D | " + (this.isDone ? "1" : "0") + " | " + this.description + " | " + this.by;
+    }
+
     private String getDate() {
         try {
             LocalDate date = LocalDate.parse(this.by);
