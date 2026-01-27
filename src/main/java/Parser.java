@@ -1,7 +1,7 @@
-public class UserInputProcessor {
+public class Parser {
     protected String userString;
 
-    public UserInputProcessor(String userString){
+    public Parser(String userString){
         this.userString = userString;
     }
 

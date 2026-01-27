@@ -7,7 +7,7 @@ public class Barn {
         System.out.println("Hello! I'm Barn\nWhat can I do for you?");
         mainLoop: while (true) {
             String userString = scanner.nextLine();
-            UserInputProcessor processor = new UserInputProcessor(userString);
+            Parser processor = new Parser(userString);
             String command = processor.getCommand();
             switch (command) {
                 case "list": {
