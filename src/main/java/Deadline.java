@@ -17,6 +17,10 @@ public class Deadline extends Task {
         }
     }
 
+    public String getFormattedString() {
+        return "D | " + (this.isDone ? "1" : "0") + " | " + this.description + " | " + this.by;
+    }
+
     private String getDate() {
         try {
             LocalDate date = LocalDate.parse(this.by);
