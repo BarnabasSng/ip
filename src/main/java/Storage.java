@@ -22,8 +22,8 @@ public class Storage {
         while (s.hasNextLine()) {
             String[] splitLine = s.nextLine().split("\\s*\\|\\s*");
             String taskType = splitLine[0];
-            String description = splitLine[1];
-            int done = Integer.parseInt(splitLine[2]);
+            int done = Integer.parseInt(splitLine[1]);
+            String description = splitLine[2];
             Task task;
             switch (taskType) {
                 case "T":
