@@ -7,6 +7,10 @@ public class TaskList {
         this.tasks = new ArrayList<Task>();
     }
 
+    public TaskList(ArrayList<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     private void printTaskSize() {
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
     }
