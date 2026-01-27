@@ -1,4 +1,4 @@
-package tasks;
+package Barn.tasks;
 
 public class Todo extends Task{
 

@@ -1,8 +1,8 @@
-package tasks.tasklist;
+package Barn.tasks.tasklist;
 
 import java.util.ArrayList;
 
-import tasks.Task;
+import Barn.tasks.Task;
 
 public class TaskList {
     protected ArrayList<Task> tasks;

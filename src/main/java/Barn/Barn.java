@@ -1,3 +1,10 @@
+package Barn;
+import Barn.commands.Command;
+import Barn.parser.Parser;
+import Barn.storage.Storage;
+import Barn.tasks.tasklist.TaskList;
+import Barn.ui.Ui;
+
 public class Barn {
 
     private Storage storage;

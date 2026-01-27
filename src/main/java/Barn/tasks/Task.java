@@ -1,4 +1,4 @@
-package tasks;
+package Barn.tasks;
 
 public abstract class Task {
     protected String description;

@@ -1,17 +1,17 @@
-package parser;
+package Barn.parser;
 
-import commands.AddCommand;
-import commands.Command;
-import commands.DeleteCommand;
-import commands.ExitCommand;
-import commands.MarkCommand;
-import commands.ShowTasksCommand;
-import commands.UnmarkCommand;
-import exceptions.EmptyDescriptionException;
-import exceptions.InvalidCommandException;
-import tasks.Deadline;
-import tasks.Event;
-import tasks.Todo;
+import Barn.commands.AddCommand;
+import Barn.commands.Command;
+import Barn.commands.DeleteCommand;
+import Barn.commands.ExitCommand;
+import Barn.commands.MarkCommand;
+import Barn.commands.ShowTasksCommand;
+import Barn.commands.UnmarkCommand;
+import Barn.exceptions.EmptyDescriptionException;
+import Barn.exceptions.InvalidCommandException;
+import Barn.tasks.Deadline;
+import Barn.tasks.Event;
+import Barn.tasks.Todo;
 
 public class Parser {
 

@@ -1,4 +1,4 @@
-package exceptions;
+package Barn.exceptions;
 
 public class EmptyDescriptionException extends Exception{
     public EmptyDescriptionException() {

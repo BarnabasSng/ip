@@ -1,4 +1,4 @@
-package exceptions;
+package Barn.exceptions;
 
 public class LoadingException extends Exception{
     public LoadingException() {

@@ -1,4 +1,4 @@
-package exceptions;
+package Barn.exceptions;
 
 public class InvalidCommandException extends Exception{
     public InvalidCommandException() {

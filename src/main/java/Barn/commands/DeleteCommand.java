@@ -1,9 +1,9 @@
-package commands;
+package Barn.commands;
 
-import storage.Storage;
-import tasks.Task;
-import tasks.tasklist.TaskList;
-import ui.Ui;
+import Barn.storage.Storage;
+import Barn.tasks.Task;
+import Barn.tasks.tasklist.TaskList;
+import Barn.ui.Ui;
 
 public class DeleteCommand extends Command{
 

@@ -1,4 +1,4 @@
-package storage;
+package Barn.storage;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -6,12 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import exceptions.LoadingException;
-import tasks.Deadline;
-import tasks.Event;
-import tasks.Task;
-import tasks.Todo;
-import tasks.tasklist.TaskList;
+import Barn.exceptions.LoadingException;
+import Barn.tasks.Deadline;
+import Barn.tasks.Event;
+import Barn.tasks.Task;
+import Barn.tasks.Todo;
+import Barn.tasks.tasklist.TaskList;
 
 public class Storage {
     protected String filePath;
