@@ -1,4 +1,8 @@
+package tasks.tasklist;
+
 import java.util.ArrayList;
+
+import tasks.Task;
 
 public class TaskList {
     protected ArrayList<Task> tasks;

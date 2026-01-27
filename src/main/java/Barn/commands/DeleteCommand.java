@@ -1,3 +1,10 @@
+package commands;
+
+import storage.Storage;
+import tasks.Task;
+import tasks.tasklist.TaskList;
+import ui.Ui;
+
 public class DeleteCommand extends Command{
 
     protected int index;

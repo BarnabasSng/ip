@@ -1,4 +1,8 @@
+package Barn.ui;
 import java.util.Scanner;
+
+import Barn.tasks.*;
+import Barn.tasks.tasklist.TaskList;
 
 public class Ui {
     public void showWelcome() {
