@@ -1,0 +1,3 @@
+T | 0 | read book
+D | 0 | return book | 2026-02-10
+E | 0 | meeting | 2pm | 4pm
