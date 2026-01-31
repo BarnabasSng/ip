@@ -23,7 +23,7 @@ public class Deadline extends Task {
         return "D | " + (this.isDone ? "1" : "0") + " | " + this.description + " | " + this.by;
     }
 
-    private String getDate() {
+    public String getDate() {
         try {
             LocalDate date = LocalDate.parse(this.by);
             String formattedDate = date.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
