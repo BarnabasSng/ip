@@ -29,12 +29,13 @@ public class Storage {
         }
         Scanner s = new Scanner(f);
         while (s.hasNextLine()) {
-            String[] splitLine = s.nextLine().split("\\s*\\|\\s*");
-            String taskType = splitLine[0];
-            int done = Integer.parseInt(splitLine[1]);
-            String description = splitLine[2];
-            Task task;
-            switch (taskType) {
+            try {
+                String[] splitLine = s.nextLine().split("\\s*\\|\\s*");
+                String taskType = splitLine[0];
+                int done = Integer.parseInt(splitLine[1]);
+                String description = splitLine[2];
+                Task task;
+                switch (taskType) {
                 case "T":
                     task = new Todo(description, done);
                     break;
@@ -49,11 +50,13 @@ public class Storage {
                     String to = splitLine[4];
                     task = new Event(description, done, from, to);
                     break;
-
                 default:
                     throw new LoadingException();
+                }
+                tasks.add(task);
+            } catch (Exception e) {
+                throw new LoadingException();
             }
-            tasks.add(task);
         }
         s.close();
         return tasks;
