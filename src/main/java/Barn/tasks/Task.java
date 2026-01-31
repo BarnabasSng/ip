@@ -27,6 +27,20 @@ public abstract class Task {
 
     public abstract String getFormattedString();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Task)) {
+            return false;
+        }
+        Task other = (Task) o;
+        return this.isDone == other.isDone
+                && this.description.equals(other.description)
+                && this.getClass().equals(other.getClass());
+    }    
+
     public String toString() {
         return "[" + this.getStatusIcon() + "] " + this.description;
     }
