@@ -4,6 +4,7 @@ import Barn.commands.AddCommand;
 import Barn.commands.Command;
 import Barn.commands.DeleteCommand;
 import Barn.commands.ExitCommand;
+import Barn.commands.FindCommand;
 import Barn.commands.MarkCommand;
 import Barn.commands.ShowTasksCommand;
 import Barn.commands.UnmarkCommand;
@@ -54,6 +55,12 @@ public class Parser {
         String[] info = { description, from, to };
         return info;
     }
+
+    private static String getKeyword(String fullCommand) {
+        String keyword = fullCommand.split(" ")[1];
+        return keyword;
+    }
+
     /**
      * Processes user command and returns a Command class object.
      * 
@@ -109,6 +116,11 @@ public class Parser {
 
                 case "bye": {
                     return new ExitCommand();
+                }
+
+                case "find": {
+                    String keyword = getKeyword(fullCommand);
+                    return new FindCommand(keyword);
                 }
 
                 default:
