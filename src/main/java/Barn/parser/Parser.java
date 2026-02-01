@@ -12,6 +12,7 @@ import Barn.commands.ListCommand;
 import Barn.commands.MarkCommand;
 import Barn.commands.UnmarkCommand;
 import Barn.exceptions.InvalidCommandException;
+import Barn.messages.ExceptionMessages;
 import Barn.tasks.Deadline;
 import Barn.tasks.Event;
 import Barn.tasks.Todo;
@@ -59,7 +60,7 @@ public class Parser {
     public static Command parse(String userInput) throws InvalidCommandException {
         Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(ExceptionMessages.EXCEPTION_MESSSAGE_EMPTY_COMMAND);
         }
 
         String commandWord = matcher.group("commandWord").toUpperCase();
@@ -108,7 +109,7 @@ public class Parser {
     private static Command parseTodo(String arguments) throws InvalidCommandException {
         Matcher matcher = TODO_ARGS_FORMAT.matcher(arguments.trim());
         if (!matcher.matches()) {
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(ExceptionMessages.EXCEPTION_MESSSAGE_TODO);
         }
         String description = matcher.group("description");
         return new AddCommand(new Todo(description));
@@ -117,7 +118,7 @@ public class Parser {
     private static Command parseDeadline(String arguments) throws InvalidCommandException {
         Matcher matcher = DEADLINE_ARGS_FORMAT.matcher(arguments.trim());
         if (!matcher.matches()) {
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(ExceptionMessages.EXCEPTION_MESSSAGE_DEADLINE);
         }
         String description = matcher.group("description");
         String by = matcher.group("by");
@@ -127,7 +128,7 @@ public class Parser {
     private static Command parseEvent(String arguments) throws InvalidCommandException {
         Matcher matcher = EVENT_ARGS_FORMAT.matcher(arguments.trim());
         if (!matcher.matches()) {
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(ExceptionMessages.EXCEPTION_MESSSAGE_EVENT);
         }
         String description = matcher.group("description");
         String from = matcher.group("from");
@@ -138,13 +139,13 @@ public class Parser {
     private static Command parseMark(String arguments) throws InvalidCommandException {
         Matcher matcher = MARK_UNMARK_DELETE_ARGS_FORMAT.matcher(arguments.trim());
         if (!matcher.matches()) {
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(ExceptionMessages.EXCEPTION_MESSSAGE_MARK);
         }
         int index;
         try {
             index = Integer.parseInt(matcher.group("index")) - 1;
         } catch (NumberFormatException e) {
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(ExceptionMessages.EXCEPTION_MESSSAGE_INDEX);
         }
         return new MarkCommand(index);
     }
@@ -152,13 +153,13 @@ public class Parser {
     private static Command parseUnmark(String arguments) throws InvalidCommandException {
         Matcher matcher = MARK_UNMARK_DELETE_ARGS_FORMAT.matcher(arguments.trim());
         if (!matcher.matches()) {
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(ExceptionMessages.EXCEPTION_MESSSAGE_UNMARK);
         }
         int index;
         try {
             index = Integer.parseInt(matcher.group("index")) - 1;
         } catch (NumberFormatException e) {
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(ExceptionMessages.EXCEPTION_MESSSAGE_INDEX);
         }
         return new UnmarkCommand(index);
     }
@@ -166,13 +167,13 @@ public class Parser {
     private static Command parseDelete(String arguments) throws InvalidCommandException {
         Matcher matcher = MARK_UNMARK_DELETE_ARGS_FORMAT.matcher(arguments.trim());
         if (!matcher.matches()) {
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(ExceptionMessages.EXCEPTION_MESSSAGE_DELETE);
         }
         int index;
         try {
             index = Integer.parseInt(matcher.group("index")) - 1;
         } catch (NumberFormatException e) {
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(ExceptionMessages.EXCEPTION_MESSSAGE_INDEX);
         }
         return new DeleteCommand(index);
     }
@@ -180,7 +181,7 @@ public class Parser {
     private static Command parseFind(String arguments) throws InvalidCommandException {
         Matcher matcher = FIND_ARGS_FORMAT.matcher(arguments.trim());
         if (!matcher.matches()) {
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(ExceptionMessages.EXCEPTION_MESSSAGE_FIND);
         }
         String keyword = matcher.group("keyword");
         return new FindCommand(keyword);
