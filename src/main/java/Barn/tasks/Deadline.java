@@ -3,6 +3,9 @@ package Barn.tasks;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Deadline class representing a task with a specified deadline. 
+ */
 public class Deadline extends Task {
     protected String by;
 

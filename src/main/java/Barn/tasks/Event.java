@@ -1,5 +1,8 @@
 package Barn.tasks;
 
+/**
+ * Event class representing an event with a specified time period.
+ */
 public class Event extends Task{
     protected String from;
     protected String to;

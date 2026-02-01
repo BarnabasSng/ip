@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import Barn.tasks.Task;
 
+/**
+ * TaskList represents a collection of tasks and allows for functionality
+ * such as adding, marking, and deleting tasks
+ */
 public class TaskList {
     protected ArrayList<Task> tasks;
 

@@ -1,5 +1,8 @@
 package Barn.tasks;
 
+/**
+ * Todo class representing a task with no other qualifiers.
+ */
 public class Todo extends Task{
 
     public Todo(String description) {

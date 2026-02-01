@@ -4,6 +4,9 @@ import java.util.Scanner;
 import Barn.tasks.*;
 import Barn.tasks.tasklist.TaskList;
 
+/**
+ * Handles interaction with the user by printing text and reading input.
+ */
 public class Ui {
     public void showWelcome() {
         System.out.println("Hello! I'm Barn\nWhat can I do for you?");
