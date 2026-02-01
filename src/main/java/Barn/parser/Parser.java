@@ -13,6 +13,10 @@ import Barn.tasks.Deadline;
 import Barn.tasks.Event;
 import Barn.tasks.Todo;
 
+/**
+ * The Parser class processes the command given by the user
+ * and returns a Command class object
+ */
 public class Parser {
 
     private static String getFirstWord(String fullCommand) {
@@ -50,7 +54,13 @@ public class Parser {
         String[] info = {description, from, to};
         return info;
     }
-
+    /**
+     * Processes user command and returns a Command class object.
+     * 
+     * @param fullCommand Full string given by the user
+     * @return Command class object representing the user command
+     * @throws InvalidCommandException If fullCommand is of an invalid format
+     */
     public static Command parse(String fullCommand) throws InvalidCommandException {
         try {
             String firstWord = getFirstWord(fullCommand);

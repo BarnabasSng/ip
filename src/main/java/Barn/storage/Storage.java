@@ -13,6 +13,9 @@ import Barn.tasks.Task;
 import Barn.tasks.Todo;
 import Barn.tasks.tasklist.TaskList;
 
+/**
+ * Manages loading and writing tasks into the txt file in hard drive. 
+ */
 public class Storage {
     protected String filePath;
 
@@ -20,6 +23,14 @@ public class Storage {
         this.filePath = filePath;
     }
 
+    /**
+     * Creates a new txt file if file does not exist. Otherwise, scan
+     * the txt file and load the given tasks into an ArrayList.
+     * 
+     * @return ArrayList of tasks in the given txt file
+     * @throws LoadingException If txt file is not in a valid format
+     * @throws IOException If error while creating file
+     */
     public ArrayList<Task> load() throws LoadingException, IOException{
         ArrayList<Task> tasks = new ArrayList<Task>();
         File f = new File(this.filePath);
@@ -62,6 +73,12 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Write the tasks into the given txt file
+     * 
+     * @param tasks TaskList containing tasks to be written
+     * @throws IOException If error while writing tasks to txt file
+     */
     public void save(TaskList tasks) throws IOException {
         FileWriter fw = new FileWriter(this.filePath);
         for (Task task: tasks.getArr()) {
