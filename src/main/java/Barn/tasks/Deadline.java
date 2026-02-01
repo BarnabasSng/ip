@@ -2,9 +2,10 @@ package Barn.tasks;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
- * Deadline class representing a task with a specified deadline. 
+ * Deadline class representing a task with a specified deadline.
  */
 public class Deadline extends Task {
     protected String by;
@@ -31,7 +32,7 @@ public class Deadline extends Task {
             LocalDate date = LocalDate.parse(this.by);
             String formattedDate = date.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
             return formattedDate;
-        } catch (Exception e) {
+        } catch (DateTimeParseException e) {
             return this.by;
         }
     }
