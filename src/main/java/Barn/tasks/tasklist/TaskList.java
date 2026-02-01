@@ -23,7 +23,7 @@ public class TaskList {
         return tasks.get(index);
     }
 
-    public void add(Task task){
+    public void add(Task task) {
         tasks.add(task);
     }
 

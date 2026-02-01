@@ -1,6 +1,6 @@
 package Barn.tasks;
 
-public class Event extends Task{
+public class Event extends Task {
     protected String from;
     protected String to;
 
@@ -21,7 +21,7 @@ public class Event extends Task{
 
     public String getFormattedString() {
         return "E | " + (this.isDone ? "1" : "0") + " | " + this.description + " | " + this.from +
-        " | " + this.to;
+                " | " + this.to;
     }
 
     @Override

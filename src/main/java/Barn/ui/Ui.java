@@ -1,4 +1,5 @@
 package Barn.ui;
+
 import java.util.Scanner;
 
 import Barn.tasks.*;
@@ -9,7 +10,7 @@ public class Ui {
         System.out.println("Hello! I'm Barn\nWhat can I do for you?");
     }
 
-    public  void showLine() {
+    public void showLine() {
         System.out.println("____________________________________________________________");
     }
 
@@ -48,8 +49,8 @@ public class Ui {
     public void showTasks(TaskList tasks) {
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < tasks.getTaskCount(); i++) {
-            System.out.println(String.valueOf(i+1)+ "." + tasks.getTask(i));
-        };
+            System.out.println(String.valueOf(i + 1) + "." + tasks.getTask(i));
+        }
     }
 
     public String readCommand() {

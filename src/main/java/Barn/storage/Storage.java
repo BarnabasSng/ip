@@ -20,7 +20,7 @@ public class Storage {
         this.filePath = filePath;
     }
 
-    public ArrayList<Task> load() throws LoadingException, IOException{
+    public ArrayList<Task> load() throws LoadingException, IOException {
         ArrayList<Task> tasks = new ArrayList<Task>();
         File f = new File(this.filePath);
         f.getParentFile().mkdirs();
@@ -36,22 +36,22 @@ public class Storage {
                 String description = splitLine[2];
                 Task task;
                 switch (taskType) {
-                case "T":
-                    task = new Todo(description, done);
-                    break;
+                    case "T":
+                        task = new Todo(description, done);
+                        break;
 
-                case "D":
-                    String by = splitLine[3];
-                    task = new Deadline(description, done, by);
-                    break;
+                    case "D":
+                        String by = splitLine[3];
+                        task = new Deadline(description, done, by);
+                        break;
 
-                case "E":
-                    String from = splitLine[3];
-                    String to = splitLine[4];
-                    task = new Event(description, done, from, to);
-                    break;
-                default:
-                    throw new LoadingException();
+                    case "E":
+                        String from = splitLine[3];
+                        String to = splitLine[4];
+                        task = new Event(description, done, from, to);
+                        break;
+                    default:
+                        throw new LoadingException();
                 }
                 tasks.add(task);
             } catch (Exception e) {
@@ -64,7 +64,7 @@ public class Storage {
 
     public void save(TaskList tasks) throws IOException {
         FileWriter fw = new FileWriter(this.filePath);
-        for (Task task: tasks.getArr()) {
+        for (Task task : tasks.getArr()) {
             fw.write(task.getFormattedString() + "\n");
         }
         fw.close();

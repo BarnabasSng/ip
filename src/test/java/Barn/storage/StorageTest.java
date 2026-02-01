@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class StorageTest {
     @Test
-    public void load_validTxt_success() throws Exception{
+    public void load_validTxt_success() throws Exception {
         ArrayList<Task> correctTasks = new ArrayList<>();
         correctTasks.add(new Todo("read book"));
         correctTasks.add(new Deadline("return book", "2026-02-10"));
