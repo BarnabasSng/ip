@@ -25,6 +25,10 @@ public abstract class Task {
         return this.description;
     }
 
+    public boolean hasKeyword(String keyword) {
+        return this.description.contains(keyword);
+    }
+
     public abstract String getFormattedString();
 
     @Override

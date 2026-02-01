@@ -52,6 +52,18 @@ public class Ui {
         };
     }
 
+    public void showFoundTasks(TaskList tasks) {
+        if (tasks.getTaskCount() == 0) {
+            System.out.println("No tasks matching keyword was found");
+        }
+        else {
+            System.out.println("Here are the matching tasks in your list:");
+            for (int i = 0; i < tasks.getTaskCount(); i++) {
+                System.out.println(String.valueOf(i+1)+ "." + tasks.getTask(i));
+            };
+        }
+    }
+
     public String readCommand() {
         Scanner scanner = new Scanner(System.in);
         String fullCommand = scanner.nextLine();
