@@ -2,6 +2,7 @@ package Barn.tasks.tasklist;
 
 import java.util.ArrayList;
 
+import Barn.exceptions.OutOfBoundsException;
 import Barn.tasks.Task;
 
 /**
@@ -23,26 +24,34 @@ public class TaskList {
         return tasks.size();
     }
 
-    public Task getTask(int index) {
-        return tasks.get(index);
+    public Task getTask(int index) throws OutOfBoundsException {
+        try {
+            return tasks.get(index);
+        } catch (IndexOutOfBoundsException e) {
+            throw new OutOfBoundsException();
+        }
     }
 
     public void add(Task task) {
         tasks.add(task);
     }
 
-    public void mark(int index) {
-        Task task = tasks.get(index);
+    public void mark(int index) throws OutOfBoundsException {
+        Task task = getTask(index);
         task.markAsDone();
     }
 
-    public void unmark(int index) {
-        Task task = tasks.get(index);
+    public void unmark(int index) throws OutOfBoundsException {
+        Task task = getTask(index);
         task.markAsNotDone();
     }
 
-    public void delete(int index) {
-        tasks.remove(index);
+    public void delete(int index) throws OutOfBoundsException {
+        try {
+            tasks.remove(index);
+        } catch (IndexOutOfBoundsException e) {
+            throw new OutOfBoundsException();
+        }
     }
 
     public ArrayList<Task> getArr() {

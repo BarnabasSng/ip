@@ -2,6 +2,7 @@ package Barn.ui;
 
 import java.util.Scanner;
 
+import Barn.exceptions.OutOfBoundsException;
 import Barn.tasks.*;
 import Barn.tasks.tasklist.TaskList;
 
@@ -49,22 +50,22 @@ public class Ui {
         System.out.println(task);
     }
 
-    public void showTasks(TaskList tasks) {
+    public void showTasks(TaskList tasks) throws OutOfBoundsException {
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < tasks.getTaskCount(); i++) {
             System.out.println(String.valueOf(i + 1) + "." + tasks.getTask(i));
         }
     }
 
-    public void showFoundTasks(TaskList tasks) {
+    public void showFoundTasks(TaskList tasks) throws OutOfBoundsException {
         if (tasks.getTaskCount() == 0) {
             System.out.println("No tasks matching keyword was found");
-        }
-        else {
+        } else {
             System.out.println("Here are the matching tasks in your list:");
             for (int i = 0; i < tasks.getTaskCount(); i++) {
-                System.out.println(String.valueOf(i+1)+ "." + tasks.getTask(i));
-            };
+                System.out.println(String.valueOf(i + 1) + "." + tasks.getTask(i));
+            }
+            ;
         }
     }
 
