@@ -1,4 +1,5 @@
 package Barn;
+
 import Barn.commands.Command;
 import Barn.parser.Parser;
 import Barn.storage.Storage;
@@ -37,8 +38,9 @@ public class Barn {
             } finally {
                 ui.showLine();
             }
+        }
     }
-}
+
     public static void main(String[] args) {
         new Barn("data/tasks.txt").run();
     }

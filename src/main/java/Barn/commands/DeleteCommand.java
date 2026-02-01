@@ -5,7 +5,7 @@ import Barn.tasks.Task;
 import Barn.tasks.tasklist.TaskList;
 import Barn.ui.Ui;
 
-public class DeleteCommand extends Command{
+public class DeleteCommand extends Command {
 
     protected int index;
 
@@ -21,7 +21,7 @@ public class DeleteCommand extends Command{
             ui.showTaskCount(tasks);
             storage.save(tasks);
         } catch (Exception e) {
-            ui.showError(e.getMessage());;
+            ui.showError(e.getMessage());
         }
     }
 

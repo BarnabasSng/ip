@@ -5,7 +5,7 @@ import Barn.tasks.Task;
 import Barn.tasks.tasklist.TaskList;
 import Barn.ui.Ui;
 
-public class AddCommand extends Command{
+public class AddCommand extends Command {
 
     protected Task task;
 
@@ -20,7 +20,7 @@ public class AddCommand extends Command{
             ui.showTaskCount(tasks);
             storage.save(tasks);
         } catch (Exception e) {
-            ui.showError(e.getMessage());;
+            ui.showError(e.getMessage());
         }
     }
 

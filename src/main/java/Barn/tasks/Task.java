@@ -42,7 +42,7 @@ public abstract class Task {
         return this.isDone == other.isDone
                 && this.description.equals(other.description)
                 && this.getClass().equals(other.getClass());
-    }    
+    }
 
     public String toString() {
         return "[" + this.getStatusIcon() + "] " + this.description;

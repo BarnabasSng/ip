@@ -5,7 +5,7 @@ import Barn.tasks.Task;
 import Barn.tasks.tasklist.TaskList;
 import Barn.ui.Ui;
 
-public class UnmarkCommand extends Command{
+public class UnmarkCommand extends Command {
 
     protected int index;
 

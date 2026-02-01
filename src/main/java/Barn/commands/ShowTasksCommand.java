@@ -4,7 +4,7 @@ import Barn.storage.Storage;
 import Barn.tasks.tasklist.TaskList;
 import Barn.ui.Ui;
 
-public class ShowTasksCommand extends Command{
+public class ShowTasksCommand extends Command {
 
     public void execute(TaskList tasks, Ui ui, Storage storage) {
         ui.showTasks(tasks);
