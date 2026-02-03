@@ -13,14 +13,14 @@ public class UnmarkCommand extends Command {
         this.index = index;
     }
 
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         try {
             Task task = tasks.getTask(index);
             tasks.unmark(index);
-            ui.showUnmark(task);
             storage.save(tasks);
+            return ui.showUnmark(task);
         } catch (Exception e) {
-            ui.showError(e.getMessage());
+            return ui.showError(e.getMessage());
         }
     }
 

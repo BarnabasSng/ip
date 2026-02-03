@@ -10,63 +10,73 @@ import Barn.tasks.tasklist.TaskList;
  * Handles interaction with the user by printing text and reading input.
  */
 public class Ui {
-    public void showWelcome() {
-        System.out.println("Hello! I'm Barn\nWhat can I do for you?");
+    public String showWelcome() {
+        return "Hello! I'm Barn\nWhat can I do for you?";
     }
 
-    public void showLine() {
-        System.out.println("____________________________________________________________");
+    public String showLine() {
+        return ("____________________________________________________________");
     }
 
-    public void showError(String error) {
-        System.out.println(error);
+    public String showError(String error) {
+        return (error);
     }
 
-    public void showExit() {
-        System.out.println("Bye. Hope to see you again soon!");
+    public String showExit() {
+        return "Bye. Hope to see you again soon!";
     }
 
-    public void showAddTask(Task task) {
-        System.out.println("Got it, I've added this task:");
-        System.out.println(task);
+    public String showAddTask(Task task) {
+        return "Got it, I've added this task:" + System.lineSeparator() + task;
     }
 
-    public void showDeleteTask(Task task) {
-        System.out.println("Noted. I've removed this task:");
-        System.out.println(task);
+    public String showDeleteTask(Task task) {
+        return "Noted. I've removed this task:" + System.lineSeparator() + task;
     }
 
-    public void showTaskCount(TaskList tasks) {
-        System.out.println("Now you have " + tasks.getTaskCount() + " tasks in the list.");
+    public String showTaskCount(TaskList tasks) {
+        return "Now you have " + tasks.getTaskCount() + " tasks in the list.";
     }
 
-    public void showMark(Task task) {
-        System.out.println("Nice! I've marked this task as done:");
-        System.out.println(task);
+    public String showMark(Task task) {
+        return "Nice! I've marked this task as done:" + System.lineSeparator() + task;
     }
 
-    public void showUnmark(Task task) {
-        System.out.println("OK, I've marked this task as not done yet:");
-        System.out.println(task);
+    public String showUnmark(Task task) {
+        return ("OK, I've marked this task as not done yet:" + System.lineSeparator() + task);
     }
 
-    public void showTasks(TaskList tasks) throws OutOfBoundsException {
-        System.out.println("Here are the tasks in your list:");
+    public String showTasks(TaskList tasks) throws OutOfBoundsException {
+        StringBuilder sb = new StringBuilder();
+
         for (int i = 0; i < tasks.getTaskCount(); i++) {
-            System.out.println(String.valueOf(i + 1) + "." + tasks.getTask(i));
+            sb.append(i + 1)
+                    .append(".")
+                    .append(tasks.getTask(i))
+                    .append(System.lineSeparator());
         }
+        String result = sb.toString();
+        return "Here are the tasks in your list:" + System.lineSeparator() + result;
+
     }
 
-    public void showFoundTasks(TaskList tasks) throws OutOfBoundsException {
+    public String showFoundTasks(TaskList tasks) throws OutOfBoundsException {
+        StringBuilder sb = new StringBuilder();
+
         if (tasks.getTaskCount() == 0) {
-            System.out.println("No tasks matching keyword was found");
+            sb.append("No tasks matching keyword was found");
         } else {
-            System.out.println("Here are the matching tasks in your list:");
+            sb.append("Here are the matching tasks in your list:")
+                    .append(System.lineSeparator());
+
             for (int i = 0; i < tasks.getTaskCount(); i++) {
-                System.out.println(String.valueOf(i + 1) + "." + tasks.getTask(i));
+                sb.append(i + 1)
+                        .append(".")
+                        .append(tasks.getTask(i))
+                        .append(System.lineSeparator());
             }
-            ;
         }
+        return sb.toString();
     }
 
     public String readCommand() {

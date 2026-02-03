@@ -6,8 +6,8 @@ import Barn.ui.Ui;
 
 public class ExitCommand extends Command {
 
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        ui.showExit();
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
+        return ui.showExit();
     }
 
     public boolean isExit() {
