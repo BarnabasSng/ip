@@ -13,9 +13,9 @@ public class FindCommand extends Command {
         this.keyword = keyword;
     }
 
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws OutOfBoundsException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws OutOfBoundsException {
         TaskList foundTasks = new TaskList(tasks.findTasksWithKeyword(this.keyword));
-        ui.showFoundTasks(foundTasks);
+        return ui.showFoundTasks(foundTasks);
     }
 
     public boolean isExit() {

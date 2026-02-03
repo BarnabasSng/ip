@@ -7,8 +7,8 @@ import Barn.ui.Ui;
 
 public class ListCommand extends Command {
 
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws OutOfBoundsException {
-        ui.showTasks(tasks);
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws OutOfBoundsException {
+        return ui.showTasks(tasks);
     }
 
     public boolean isExit() {

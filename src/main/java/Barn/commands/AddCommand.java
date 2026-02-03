@@ -13,14 +13,13 @@ public class AddCommand extends Command {
         this.task = task;
     }
 
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         try {
             tasks.add(task);
-            ui.showAddTask(task);
-            ui.showTaskCount(tasks);
             storage.save(tasks);
+            return ui.showAddTask(task) + System.lineSeparator() + ui.showTaskCount(tasks);
         } catch (Exception e) {
-            ui.showError(e.getMessage());
+            return ui.showError(e.getMessage());
         }
     }
 

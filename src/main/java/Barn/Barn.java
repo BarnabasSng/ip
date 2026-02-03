@@ -41,7 +41,18 @@ public class Barn {
         }
     }
 
-    public static void main(String[] args) {
-        new Barn("data/tasks.txt").run();
+    public String getResponse(String userInput) {
+        try {
+            Command c = Parser.parse(userInput);
+            String response = c.execute(tasks, ui, storage);
+            return response;
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+
+    }
+
+    public String showWelcome() {
+        return ui.showWelcome();
     }
 }
