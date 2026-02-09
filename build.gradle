@@ -48,7 +48,7 @@ test {
 }
 
 application {
-    mainClass.set("Barn/gui/Launcher")
+    mainClass.set("barn/gui/Launcher")
 }
 
 shadowJar {
