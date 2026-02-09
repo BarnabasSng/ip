@@ -1,7 +1,7 @@
 package Barn.tasks;
 
 /**
- * Abstract class representing a Task. 
+ * Abstract class representing a Task.
  */
 public abstract class Task {
     protected String description;
