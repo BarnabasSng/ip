@@ -5,6 +5,9 @@ import Barn.tasks.Task;
 import Barn.tasks.tasklist.TaskList;
 import Barn.ui.Ui;
 
+/**
+ * Command class that adds a task to the tasklist, then saves it in the storage.
+ */
 public class AddCommand extends Command {
 
     protected Task task;
@@ -21,9 +24,5 @@ public class AddCommand extends Command {
         } catch (Exception e) {
             return ui.showError(e.getMessage());
         }
-    }
-
-    public boolean isExit() {
-        return false;
     }
 }
