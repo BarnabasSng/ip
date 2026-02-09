@@ -9,6 +9,7 @@ public class Todo extends Task {
         super(description);
     }
 
+    /** Returns formatted string for storage in txt file */
     public String getFormattedString() {
         return "T | " + (this.isDone ? "1" : "0") + " | " + this.description;
     }

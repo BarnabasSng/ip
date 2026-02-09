@@ -15,10 +15,17 @@ public class Deadline extends Task {
         this.by = by;
     }
 
+    /** Returns formatted string for storage in txt file */
     public String getFormattedString() {
         return "D | " + (this.isDone ? "1" : "0") + " | " + this.description + " | " + this.by;
     }
 
+    /**
+     * Get deadline in formatted date (Month Day Year) if given date can be
+     * parsed. Otherwise, return the deadline as the given user input string
+     * 
+     * @return String of either formatted date or user input date
+     */
     public String getDate() {
         try {
             LocalDate date = LocalDate.parse(this.by);

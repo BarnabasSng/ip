@@ -5,6 +5,9 @@ import Barn.storage.Storage;
 import Barn.tasks.tasklist.TaskList;
 import Barn.ui.Ui;
 
+/**
+ * Command class that finds tasks with description containing the keyword.
+ */
 public class FindCommand extends Command {
 
     protected String keyword;
@@ -16,9 +19,5 @@ public class FindCommand extends Command {
     public String execute(TaskList tasks, Ui ui, Storage storage) throws OutOfBoundsException {
         TaskList foundTasks = new TaskList(tasks.findTasksWithKeyword(this.keyword));
         return ui.showFoundTasks(foundTasks);
-    }
-
-    public boolean isExit() {
-        return false;
     }
 }

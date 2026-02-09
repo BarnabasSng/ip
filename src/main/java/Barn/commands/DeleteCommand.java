@@ -5,6 +5,10 @@ import Barn.tasks.Task;
 import Barn.tasks.tasklist.TaskList;
 import Barn.ui.Ui;
 
+/**
+ * Command class that deletes a task in the tasklist, then saves it in the
+ * storage.
+ */
 public class DeleteCommand extends Command {
 
     protected int index;
@@ -22,9 +26,5 @@ public class DeleteCommand extends Command {
         } catch (Exception e) {
             return ui.showError(e.getMessage());
         }
-    }
-
-    public boolean isExit() {
-        return false;
     }
 }

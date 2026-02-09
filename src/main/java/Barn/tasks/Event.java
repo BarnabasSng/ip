@@ -13,6 +13,7 @@ public class Event extends Task {
         this.to = to;
     }
 
+    /** Returns formatted string for storage in txt file */
     public String getFormattedString() {
         return "E | " + (this.isDone ? "1" : "0") + " | " + this.description + " | " + this.from +
                 " | " + this.to;

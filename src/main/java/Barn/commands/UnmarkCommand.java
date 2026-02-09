@@ -5,6 +5,9 @@ import Barn.tasks.Task;
 import Barn.tasks.tasklist.TaskList;
 import Barn.ui.Ui;
 
+/**
+ * Command class that marks a task as not done, then saves it in the storage.
+ */
 public class UnmarkCommand extends Command {
 
     protected int index;
@@ -22,9 +25,5 @@ public class UnmarkCommand extends Command {
         } catch (Exception e) {
             return ui.showError(e.getMessage());
         }
-    }
-
-    public boolean isExit() {
-        return false;
     }
 }
