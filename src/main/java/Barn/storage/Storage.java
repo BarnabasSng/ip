@@ -20,6 +20,8 @@ import Barn.tasks.tasklist.TaskList;
  */
 public class Storage {
 
+    private static final String DONE = "1";
+
     public enum TaskType {
         T,
         D,
@@ -52,13 +54,9 @@ public class Storage {
      */
     public ArrayList<Task> load() throws LoadingException, IOException {
         ArrayList<Task> tasks = new ArrayList<Task>();
-        File f = new File(this.filePath);
-        f.getParentFile().mkdirs();
-        if (!f.exists()) {
-            f.createNewFile();
-        }
-
+        File f = createFile();
         Scanner s = new Scanner(f);
+
         while (s.hasNextLine()) {
             String line = s.nextLine();
             Matcher matcher = TASK_SAVE_FORMAT.matcher(line.trim());
@@ -97,7 +95,7 @@ public class Storage {
     }
 
     /**
-     * Write the tasks into the given txt file
+     * Write the tasks into the given txt file.
      * 
      * @param tasks TaskList containing tasks to be written
      * @throws IOException If error while writing tasks to txt file
@@ -110,6 +108,13 @@ public class Storage {
         fw.close();
     }
 
+    /**
+     * Creates a Todo task from the given arguments.
+     * 
+     * @param arguments String containing Todo description
+     * @return new Todo task
+     * @throws LoadingException If arguments is empty
+     */
     private Task getTodoTask(String arguments) throws LoadingException {
         Matcher matcher = TODO_SAVE_FORMAT.matcher(arguments);
         if (!matcher.matches()) {
@@ -117,12 +122,21 @@ public class Storage {
         }
         String description = matcher.group("description");
         Task task = new Todo(description);
-        if (matcher.group("doneFlag").equals("1")) {
+        if (matcher.group("doneFlag").equals(DONE)) {
             task.markAsDone();
         }
         return task;
     }
 
+    /**
+     * Creates a Deadline task from the given arguments
+     * 
+     * @param arguments String containing description and deadline date (indicated
+     *                  by "/by" string)
+     * @return new Deadline task
+     * @throws LoadingException If description is empty or arguments does not
+     *                          contain "/by" string
+     */
     private Task getDeadlineTask(String arguments) throws LoadingException {
         Matcher matcher = DEADLINE_SAVE_FORMAT.matcher(arguments);
         if (!matcher.matches()) {
@@ -131,12 +145,21 @@ public class Storage {
         String description = matcher.group("description");
         String by = matcher.group("by");
         Task task = new Deadline(description, by);
-        if (matcher.group("doneFlag").equals("1")) {
+        if (matcher.group("doneFlag").equals(DONE)) {
             task.markAsDone();
         }
         return task;
     }
 
+    /**
+     * Creates an Event task from the given arguments
+     * 
+     * @param arguments String containing description, and time of event (indicated
+     *                  by "/from" and "/to" strings)
+     * @return new Event task
+     * @throws LoadingException If description is empty or arguments does not
+     *                          contain "/from" or "/to" strings
+     */
     private Task getEventTask(String arguments) throws LoadingException {
         Matcher matcher = EVENT_SAVE_FORMAT.matcher(arguments);
         if (!matcher.matches()) {
@@ -146,9 +169,24 @@ public class Storage {
         String from = matcher.group("from");
         String to = matcher.group("to");
         Task task = new Event(description, from, to);
-        if (matcher.group("doneFlag").equals("1")) {
+        if (matcher.group("doneFlag").equals(DONE)) {
             task.markAsDone();
         }
         return task;
+    }
+
+    /**
+     * Creates a new txt file if file does not exist.
+     * 
+     * @return Txt file of the todo list.
+     * @throws IOException If error while creating file
+     */
+    private File createFile() throws IOException {
+        File f = new File(this.filePath);
+        f.getParentFile().mkdirs();
+        if (!f.exists()) {
+            f.createNewFile();
+        }
+        return f;
     }
 }

@@ -78,10 +78,4 @@ public class Ui {
         }
         return sb.toString();
     }
-
-    public String readCommand() {
-        Scanner scanner = new Scanner(System.in);
-        String fullCommand = scanner.nextLine();
-        return fullCommand;
-    }
 }
