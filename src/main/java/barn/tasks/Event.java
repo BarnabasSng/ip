@@ -1,5 +1,7 @@
 package barn.tasks;
 
+import java.util.ArrayList;
+
 /**
  * Event class representing an event with a specified time period.
  */
@@ -8,8 +10,8 @@ public class Event extends Task {
     protected String to;
 
     /** Creates an Event task*/
-    public Event(String description, String from, String to) {
-        super(description);
+    public Event(String description, String from, String to, ArrayList<String> tags) {
+        super(description, tags);
         this.from = from;
         this.to = to;
     }
@@ -17,11 +19,11 @@ public class Event extends Task {
     /** Returns formatted string for storage in txt file */
     public String getFormattedString() {
         return "E | " + (this.isDone ? "1" : "0") + " | " + this.description + " | " + this.from
-                + " | " + this.to;
+                + " | " + this.to + this.getFormattedTags();
     }
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";
+        return "[E]" + super.toString() + " (from: " + from + " to: " + to + ") " + getTagsAsString();
     }
 }

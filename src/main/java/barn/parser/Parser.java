@@ -1,5 +1,8 @@
 package barn.parser;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,12 +27,19 @@ import barn.tasks.Todo;
 public class Parser {
 
     public static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
-    public static final Pattern TODO_ARGS_FORMAT = Pattern.compile("(?<description>.+)");
-    public static final Pattern DEADLINE_ARGS_FORMAT = Pattern.compile("(?<description>[^/]+)"
-            + " /by (?<by>.+)");
-    public static final Pattern EVENT_ARGS_FORMAT = Pattern.compile("(?<description>[^/]+)"
-            + " /from (?<from>[^/]+)"
-            + " /to (?<to>.+)");
+    public static final Pattern TODO_ARGS_FORMAT = Pattern.compile("(?<description>[^#]+?)\\s*(?<tags>(?:#\\w+\\s*)*)");
+    public static final Pattern DEADLINE_ARGS_FORMAT = Pattern.compile(
+        "(?<description>[^/]+)"
+                + " /by (?<by>[^#]+)"
+                + "\\s*(?<tags>(?:#\\w+\\s*)*)"
+    );
+    public static final Pattern EVENT_ARGS_FORMAT = Pattern.compile(
+        "(?<description>[^/]+)"
+                + " /from (?<from>[^/]+)"
+                + " /to (?<to>[^#]+)"
+                + "\\s*(?<tags>(?:#\\w+\\s*)*)"
+    );
+
     public static final Pattern MARK_UNMARK_DELETE_ARGS_FORMAT = Pattern.compile("\\s*(?<index>\\d+)\\s*");
     public static final Pattern FIND_ARGS_FORMAT = Pattern.compile("(?<keyword>.+)");
     private static final int INDEX_OFFSET = 1; // offset for todo list which has 1-based index
@@ -83,8 +93,13 @@ public class Parser {
         if (!matcher.matches()) {
             throw new InvalidCommandException(ExceptionMessages.EXCEPTION_MESSAGE_TODO);
         }
-        String description = matcher.group("description");
-        return new AddCommand(new Todo(description));
+        String description = matcher.group("description").trim();
+        String tagString = matcher.group("tags");
+        ArrayList<String> tags = new ArrayList<>();
+        if (tagString != null && !tagString.isBlank()) {
+            Collections.addAll(tags, tagString.trim().split("\\s+"));
+        }
+        return new AddCommand(new Todo(description, tags));
     }
 
     /**
@@ -101,9 +116,14 @@ public class Parser {
         if (!matcher.matches()) {
             throw new InvalidCommandException(ExceptionMessages.EXCEPTION_MESSAGE_DEADLINE);
         }
-        String description = matcher.group("description");
-        String by = matcher.group("by");
-        return new AddCommand(new Deadline(description, by));
+        String description = matcher.group("description").trim();
+        String by = matcher.group("by").trim();
+        String tagString = matcher.group("tags");
+        ArrayList<String> tags = new ArrayList<>();
+        if (tagString != null && !tagString.isBlank()) {
+            Collections.addAll(tags, tagString.trim().split("\\s+"));
+        }
+        return new AddCommand(new Deadline(description, by, tags));
     }
 
     /**
@@ -120,10 +140,15 @@ public class Parser {
         if (!matcher.matches()) {
             throw new InvalidCommandException(ExceptionMessages.EXCEPTION_MESSAGE_EVENT);
         }
-        String description = matcher.group("description");
-        String from = matcher.group("from");
-        String to = matcher.group("to");
-        return new AddCommand(new Event(description, from, to));
+        String description = matcher.group("description").trim();
+        String from = matcher.group("from").trim();
+        String to = matcher.group("to").trim();
+        String tagString = matcher.group("tags");
+        ArrayList<String> tags = new ArrayList<>();
+        if (tagString != null && !tagString.isBlank()) {
+            Collections.addAll(tags, tagString.trim().split("\\s+"));
+        }
+        return new AddCommand(new Event(description, from, to, tags));
     }
 
     /**

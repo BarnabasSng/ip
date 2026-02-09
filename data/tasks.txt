@@ -1,0 +1,4 @@
+T | 0 | read book | #fun #tired 
+D | 0 | return book | 2026-02-10
+E | 0 | meeting | 2pm | 4pm
+T | 0 | test | #lol 

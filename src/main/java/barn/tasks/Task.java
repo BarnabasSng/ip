@@ -1,16 +1,20 @@
 package barn.tasks;
 
+import java.util.ArrayList;
+
 /**
  * Abstract class representing a Task.
  */
 public abstract class Task {
     protected String description;
     protected boolean isDone;
+    private ArrayList<String> tags;
 
     /** Constructor for a Task object*/
-    public Task(String description) {
+    public Task(String description, ArrayList<String> tags) {
         this.description = description;
         this.isDone = false;
+        this.tags = tags;
     }
 
     public String getStatusIcon() {
@@ -35,6 +39,14 @@ public abstract class Task {
 
     public abstract String getFormattedString();
 
+    protected String getTagsAsString() {
+        StringBuilder sb = new StringBuilder();
+        for (String tag : tags) {
+            sb.append(tag).append(" ");
+        }
+        return sb.toString().trim();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -50,5 +62,18 @@ public abstract class Task {
 
     public String toString() {
         return "[" + this.getStatusIcon() + "] " + this.description;
+    }
+
+    protected String getFormattedTags() {
+        if (tags.isEmpty()) {
+            return "";
+        } else {
+            StringBuilder sb = new StringBuilder();
+            sb.append(" | ");
+            for (String tag : tags) {
+                sb.append(tag).append(" ");
+            }
+            return sb.toString();
+        }
     }
 }

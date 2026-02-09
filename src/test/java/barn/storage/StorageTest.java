@@ -15,9 +15,10 @@ public class StorageTest {
     @Test
     public void load_validTxt_success() throws Exception {
         ArrayList<Task> correctTasks = new ArrayList<>();
-        correctTasks.add(new Todo("read book"));
-        correctTasks.add(new Deadline("return book", "2026-02-10"));
-        correctTasks.add(new Event("meeting", "2pm", "4pm"));
+        ArrayList<String> tags = new ArrayList<>();
+        correctTasks.add(new Todo("read book", tags));
+        correctTasks.add(new Deadline("return book", "2026-02-10", tags));
+        correctTasks.add(new Event("meeting", "2pm", "4pm", tags));
         assertEquals(correctTasks, new Storage("data/valid.txt").load());
     }
 
@@ -25,7 +26,8 @@ public class StorageTest {
     public void load_invalidTxt_success() {
         try {
             ArrayList<Task> correctTasks = new ArrayList<>();
-            correctTasks.add(new Todo("read book"));
+            ArrayList<String> tags = new ArrayList<>();
+            correctTasks.add(new Todo("read book", tags));
             assertEquals(correctTasks, new Storage("data/invalid.txt").load());
         } catch (Exception e) {
             assertEquals("Error when loading Barn.txt file", e.getMessage());
