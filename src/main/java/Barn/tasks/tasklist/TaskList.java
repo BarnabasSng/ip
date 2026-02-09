@@ -34,6 +34,7 @@ public class TaskList {
 
     public void add(Task task) {
         tasks.add(task);
+        assert this.getTaskCount() > 0;
     }
 
     public void mark(int index) throws OutOfBoundsException {

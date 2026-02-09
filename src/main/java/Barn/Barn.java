@@ -21,6 +21,7 @@ public class Barn {
             ui.showError(e.getMessage());
             tasks = new TaskList();
         }
+        assert tasks != null;
     }
 
     public void run() {
