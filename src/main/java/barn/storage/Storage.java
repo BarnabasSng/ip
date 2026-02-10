@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,12 +21,15 @@ import barn.tasks.tasklist.TaskList;
  */
 public class Storage {
 
-    public static final Pattern TASK_SAVE_FORMAT = Pattern.compile("^(?<taskType>[TDE]) \\| (?<arguments>.*)$");
-    public static final Pattern TODO_SAVE_FORMAT = Pattern.compile("(?<doneFlag>[01]) \\| (?<description>.+)");
+    public static final Pattern TASK_SAVE_FORMAT = Pattern.compile("^(?<taskType>[TDE]) \\| (?<arguments>.*)");
+    public static final Pattern TODO_SAVE_FORMAT = Pattern.compile("(?<doneFlag>[01]) \\| (?<description>[^|]+)"
+        + "(?: \\| (?<tags>(?:#\\w+\\s*)+))?");
     public static final Pattern DEADLINE_SAVE_FORMAT = Pattern
-            .compile("(?<doneFlag>[01]) \\| (?<description>.+) \\| (?<by>.+)");
+            .compile("(?<doneFlag>[01]) \\| (?<description>[^|]+) \\| (?<by>[^|]+)"
+                    + "(?: \\| (?<tags>(?:#\\w+\\s*)+))?");
     public static final Pattern EVENT_SAVE_FORMAT = Pattern
-            .compile("(?<doneFlag>[01]) \\| (?<description>.+) \\| (?<from>.+) \\| (?<to>.+)");
+            .compile("(?<doneFlag>[01]) \\| (?<description>[^|]+) \\| (?<from>[^|]+) \\| (?<to>[^|]+)"
+                    + "(?: \\| (?<tags>(?:#\\w+\\s*)+))?");
     private static final String DONE = "1";
     protected String filePath;
 
@@ -110,8 +114,13 @@ public class Storage {
         if (!matcher.matches()) {
             throw new LoadingException();
         }
-        String description = matcher.group("description");
-        Task task = new Todo(description);
+        String description = matcher.group("description").trim();
+        String tagString = matcher.group("tags");
+        ArrayList<String> tags = new ArrayList<>();
+        if (tagString != null && !tagString.isBlank()) {
+            Collections.addAll(tags, tagString.trim().split("\\s+"));
+        }
+        Task task = new Todo(description, tags);
         if (matcher.group("doneFlag").equals(DONE)) {
             task.markAsDone();
         }
@@ -132,9 +141,14 @@ public class Storage {
         if (!matcher.matches()) {
             throw new LoadingException();
         }
-        String description = matcher.group("description");
-        String by = matcher.group("by");
-        Task task = new Deadline(description, by);
+        String description = matcher.group("description").trim();
+        String by = matcher.group("by").trim();
+        String tagString = matcher.group("tags");
+        ArrayList<String> tags = new ArrayList<>();
+        if (tagString != null && !tagString.isBlank()) {
+            Collections.addAll(tags, tagString.trim().split("\\s+"));
+        }
+        Task task = new Deadline(description, by, tags);
         if (matcher.group("doneFlag").equals(DONE)) {
             task.markAsDone();
         }
@@ -155,10 +169,15 @@ public class Storage {
         if (!matcher.matches()) {
             throw new LoadingException();
         }
-        String description = matcher.group("description");
-        String from = matcher.group("from");
-        String to = matcher.group("to");
-        Task task = new Event(description, from, to);
+        String description = matcher.group("description").trim();
+        String from = matcher.group("from").trim();
+        String to = matcher.group("to").trim();
+        String tagString = matcher.group("tags");
+        ArrayList<String> tags = new ArrayList<>();
+        if (tagString != null && !tagString.isBlank()) {
+            Collections.addAll(tags, tagString.trim().split("\\s+"));
+        }
+        Task task = new Event(description, from, to, tags);
         if (matcher.group("doneFlag").equals(DONE)) {
             task.markAsDone();
         }

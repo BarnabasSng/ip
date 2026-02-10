@@ -3,6 +3,7 @@ package barn.tasks;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 
 /**
  * Deadline class representing a task with a specified deadline.
@@ -11,14 +12,15 @@ public class Deadline extends Task {
     protected String by;
 
     /** Creates a Deadline task */
-    public Deadline(String description, String by) {
-        super(description);
+    public Deadline(String description, String by, ArrayList<String> tags) {
+        super(description, tags);
         this.by = by;
     }
 
     /** Returns formatted string for storage in txt file */
     public String getFormattedString() {
-        return "D | " + (this.isDone ? "1" : "0") + " | " + this.description + " | " + this.by;
+        return "D | " + (this.isDone ? "1" : "0") + " | " + this.description + " | " + this.by
+                + this.getFormattedTags();
     }
 
     /**
@@ -39,6 +41,6 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + this.getDate() + ")";
+        return "[D]" + super.toString() + " (by: " + this.getDate() + ") " + getTagsAsString();
     }
 }
