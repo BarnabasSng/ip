@@ -36,7 +36,6 @@ public class Barn {
         } catch (Exception e) {
             return e.getMessage();
         }
-
     }
 
     public String showWelcome() {
