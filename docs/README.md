@@ -1,30 +1,55 @@
-# Duke User Guide
+# Barn User Guide
 
-// Update the title above to match the actual product name
+![Ui.png](Ui.png)
 
-// Product screenshot goes here
+## Introduction
+This is a chatbot that serves as a todo list. It helps you to keep track of 
+future tasks, events, and deadlines.
 
-// Product intro goes here
+## Adding tasks
+To add a task , type in todo (task name)
+
+Example: `todo borrow book`
+
+A todo task will be added to the list
 
 ## Adding deadlines
 
-// Describe the action and its outcome.
+To add a task with a deadline, type in deadline (task name) /by (deadline date)
 
-// Give examples of usage
+Example: `deadline return book /by tomorrow`
 
-Example: `keyword (optional arguments)`
+A deadline task will be added to the list
 
-// A description of the expected outcome goes here
+## Add events
 
-```
-expected output
-```
+To add an event task, type in event (event name) /from (start time) /to (end time)
 
-## Feature ABC
+Example: `event meeting /from 1pm /to 2pm`
 
-// Feature details
+An event task will be added to the list
 
+## Show all items in task list
 
-## Feature XYZ
+To show all items currently in list, simply type in `list`
 
-// Feature details
+## Mark done
+To mark an item as done, type in mark, followed by the index of the task to be marked as done.\
+Example: `mark 3`
+
+## Mark as not done
+Similarly, you can mark an item as not done by using unmark.
+Example: `unmark 3`
+
+## Delete task 
+To delete a task, type in delete followed by the index of the task to be deleted.\
+Example: `delete 2`
+
+## Find task
+To find a task with matching keyword, type in find followed by the keywords. This will find events that
+contain the keyword in the description.\
+Example: `find book`
+
+## Tagging tasks
+You can also tag tasks by adding #tagname to the end of any add command.\
+Example: `todo borrow book #fun`
